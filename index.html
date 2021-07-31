@@ -81,6 +81,298 @@
     <p>   </p>
     <p class="copy">© 2021 Pro Dreams International.</p>
 	<p class="copy2">Making Your Dreams A Professional Reality.</p>
+	input(type='radio' name='metal' id='gold' checked)
+label(for='gold') GOLD
+input(type='radio' name='metal' id='silver')
+label(for='silver') SILVER
+input(type='radio' name='metal' id='bronze')
+label(for='bronze') BRONZE
+div.container
+	div.rings
+		- for (var x = 1; x < 6; x++)
+			div.ring
+				- for (var y = 1; y < 21; y++)
+					span
+	div.rings
+		- for (var x = 1; x < 6; x++)
+			div.ring
+
+      /*** debug in progress ***/
+
+$metals: (gold, silver, bronze);
+
+:root {
+	--metal: #ffffff45;
+	--gold:   repeating-conic-gradient(#edc800 0deg, #ffe800 15deg, #f3cf00 30deg, #e3b600 45deg, #edc800 60deg) 10% 10%;
+	--silver: repeating-conic-gradient(#c3c3c3 0deg, #cccccc 15deg, #c6c6c6 30deg, #d7d7d7 45deg, #c3c3c3 60deg) 10% 10%;
+	--bronze: repeating-conic-gradient(#d95641 0deg, #b14439 15deg, #b2453a 30deg, #d25645 45deg, #d95641 60deg) 10% 10%;
+	--m-gold: #ffcc00;
+	--m-silver: #e9e9e9;
+	--m-bronze: #ff6f59;
+	--ring-clip: polygon(100% 50%, 100% 100%, 0px 100%, 0px 0px, 100% 0px, 100% 50%, 90% 50%, 89.8012% 46.0173%, 89.2069% 42.0742%, 88.2229% 38.2098%, 86.859% 34.4626%, 85.1289% 30.8698%, 83.0496% 27.4672%, 80.6418% 24.2885%, 77.9295% 21.3653%, 74.9396% 18.7267%, 71.7019% 16.399%, 68.2484% 14.4051%, 64.6136% 12.7651%, 60.8336% 11.495%, 56.9459% 10.6077%, 52.9892% 10.1118%, 49.0028% 10.0124%, 45.0263% 10.3104%, 41.0992% 11.0029%, 37.2605% 12.0829%, 33.5485% 13.5398%, 30% 15.359%, 26.6503% 17.5225%, 23.5326% 20.0088%, 20.6779% 22.7931%, 18.1147% 25.8478%, 15.8684% 29.1426%, 13.9612% 32.6447%, 12.4123% 36.3192%, 11.2369% 40.1297%, 10.4468% 44.0383%, 10.0497% 48.0062%, 10.0497% 51.9938%, 10.4468% 55.9617%, 11.2369% 59.8703%, 12.4123% 63.6808%, 13.9612% 67.3553%, 15.8684% 70.8574%, 18.1147% 74.1522%, 20.6779% 77.2069%, 23.5326% 79.9912%, 26.6503% 82.4775%, 30% 84.641%, 33.5485% 86.4602%, 37.2605% 87.9171%, 41.0992% 88.9971%, 45.0263% 89.6896%, 49.0028% 89.9876%, 52.9892% 89.8882%, 56.9459% 89.3923%, 60.8336% 88.505%, 64.6136% 87.2349%, 68.2484% 85.5949%, 71.7019% 83.601%, 74.9396% 81.2733%, 77.9295% 78.6347%, 80.6418% 75.7115%, 83.0496% 72.5328%, 85.1289% 69.1302%, 86.859% 65.5374%, 88.2229% 61.7902%, 89.2069% 57.9258%, 89.8012% 53.9827%, 90% 50%);
+	/***
+	polygon for the ring by @strangerintheq from stackoverflow:
+	https://stackoverflow.com/questions/37000558/clip-path-inset-circle
+	***/
+}
+
+body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	& * {
+		box-sizing: border-box;
+	}
+}
+
+.container {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(11deg, #000000 0%, #2c3e50 75%);
+	perspective: 100vmin;
+	padding-bottom: 10vh;
+}
+
+.rings {
+  width: 100vmin;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	transform-style: preserve-3d;
+	transform: rotateY(45deg);
+	animation: spin1 1.75s ease 0s 1, spin2 4.575s ease-in-out 1.75s infinite alternate;
+	position: absolute;
+	&:hover,
+	&:hover + .rings,
+	&:hover .ring:before {
+			animation-play-state: paused;
+	}
+	+ .rings {
+    filter: drop-shadow(0px 0px 1.5vmin black) brightness(0) blur(1.5vmin) opacity(0.35);
+    animation: shadow1 1.75s ease 0s 1, shadow2 4.575s ease-in-out 1.75s infinite alternate;
+    z-index: -1;
+	}
+}
+
+
+.ring {
+	width: 30vmin;
+	height: 30vmin;
+	border-radius: 100%;
+	transform: translate3d(-31vmin, -8vmin, 0) ;
+	transform-style: preserve-3d;
+	position: absolute;
+	box-shadow: 0 0 0.1vmin 0.15vmin var(--metal), 0 0 0.1vmin 0.15vmin var(--metal) inset;
+	&:before, &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background:
+			radial-gradient(circle at 20% 15%, #ffffffcc 5%, #ffffff40 7%, transparent 13%),
+			radial-gradient(circle at 80% 85%, #ffffffcc 5%, #ffffff40 7%, transparent 13%);
+    border-radius: 100%;
+    animation: shine 5s ease-in-out 2s infinite alternate;
+    transform: rotate(0deg) translate3d(0,0,0.1vmin);
+    filter: blur(7px);
+	}
+	&:after {
+    clip-path: var(--ring-clip);
+		background: var(--metal);
+		filter: none;
+		animation: none;
+		transform: translate3d(0,0,0.09vmin);
+	}
+	& span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100%;
+    transform: translateZ(-1px);
+    filter: brightness(0.75);
+    background: var(--metal);
+    clip-path: var(--ring-clip);
+	}
+	&:nth-child(2) { transform: translate3d(-15vmin, 8vmin, 0); }
+	&:nth-child(3) { transform: translate3d(0, -8vmin, 0); }
+	&:nth-child(4) { transform: translate3d(16vmin, 8vmin, 0); }
+	&:nth-child(5) { transform: translate3d(31vmin, -8vmin, 0); }
+}
+
+
+@keyframes spin1 {
+	  0% { transform: rotateY(0deg)}
+	100% { transform: rotateY(420deg)}
+}
+
+@keyframes spin2 {
+	  0% { transform: rotateY(60deg)}
+	100% { transform: rotateY(-60deg)}
+}
+
+@keyframes shadow1 {
+	  0% { transform: rotateY(0deg) rotateX(30deg) translateZ(-30vmin) translateY(-10vmin)}
+	100% { transform: rotateY(420deg) rotateX(30deg) translateZ(-30vmin) translateY(-10vmin)}
+}
+
+@keyframes shadow2 {
+	  0% { transform: rotateY(60deg) rotateX(30deg) translateZ(-30vmin) translateY(-10vmin)}
+	100% { transform: rotateY(-60deg) rotateX(30deg) translateZ(-30vmin) translateY(-10vmin)}
+}
+
+@keyframes shine {
+	  0% { transform: rotate(0deg) translate3d(0,0,0.1vmin); }
+	100% { transform: rotate(80deg) translate3d(0,0,0.1vmin); }
+}
+
+
+@for $i from 1 through 20 {
+	.ring span {
+		&:nth-child(#{$i}) {
+    	transform: translateZ(-#{$i}px);
+			@if $i == 20 {
+				filter: none;
+   		}
+		}
+	}
+}
+
+
+input { display: none; }
+
+label {
+	width: 10vmin;
+	height: 10vmin;
+	position: absolute;
+	z-index: 3;
+	bottom: 8vmin;
+	transform: translateX(calc(50vw - 5vmin));
+	border-radius: 100%;
+	filter: contrast(0.75) sepia(0.65) opacity(0.75);
+	cursor: pointer;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5vmin;
+	padding-bottom: 2.5vmin;
+	color: #00000060;
+	transition: all 0.5s ease 0s;
+	font-weight: bold;
+	border: 0.75vmin solid #00000020;
+	&:before, &:after {
+		content: "";
+		width: 1.25vmin;
+		height: 1.25vmin;
+		position: absolute;
+		border-radius: 100%;
+		border: 0.25vmin solid #00000050;
+		filter:
+			drop-shadow(1.85vmin 0 0 black)
+			drop-shadow(0.925vmin 0.75vmin 0 black);
+		margin-left: -3.5vmin;
+		margin-top: 5vmin;
+	}
+	&:after {
+		filter: none;
+		margin-left: 3.5vmin;
+	}
+	&[for=gold] {
+		background: var(--gold);
+		box-shadow: 0 0.75vmin 0.1vmin 0 #846900;
+		margin-left: -15vmin;
+	}
+	&[for=silver] {
+		background: var(--silver);
+		box-shadow: 0 0.75vmin 0.1vmin 0 #808080;
+	}
+	&[for=bronze] {
+		background: var(--bronze);
+		box-shadow: 0 0.75vmin 0.1vmin 0 #6d2821;
+		margin-left: 15vmin;
+	}
+}
+
+input:checked + label, input + label:hover {
+	filter: none;
+	transition: all 0.5s ease 0s;
+	border-color: #00000040;
+	transform: translateX(calc(50vw - 5vmin)) translateY(1vmin);
+	box-shadow:
+		0 0 0.15vmin 0.15vmin #000,
+		-0.5vmin -0.5vmin 1vmin 0vmin #ffffff20,
+		0.5vmin 0.5vmin 1vmin 0vmin #000000,
+		0.5vmin 0.5vmin 1vmin 0vmin #000000;
+}
+
+@each $color in $metals {
+	input##{$color}:checked ~ .container  {
+		--metal: var(--#{$color});
+		@if $color == bronze {
+			& .ring:before {
+				background:
+					radial-gradient(circle at 20% 15%, #ffb8ae82 5%, #ff7b7b40 7%, transparent 13%),
+					radial-gradient(circle at 80% 85%, #ffb8ae82 5%, #ff7b7b40 7%, transparent 13%);
+			}
+   	}
+	}
+	input##{$color}:checked + label {
+    box-shadow:
+			0 0 0.15vmin 0.15vmin #000,
+			-0.5vmin -0.5vmin 1vmin 0vmin #ffffff20,
+			0.5vmin 0.5vmin 1vmin 0vmin #000000,
+			0.5vmin 0.5vmin 1vmin 0vmin #000000,
+			-0.5vmin -0.5vmin 3vmin 0vmin var(--m-#{$color});
+	}
+}
+
+@media only screen and (orientation: portrait) {
+
+	label {
+		width: 20vmin;
+		height: 20vmin;
+		position: absolute;
+		z-index: 3;
+		bottom: 8vmin;
+		transform: translateX(calc(50vw - 10vmin));
+		font-size: 2.5vmin;
+		padding-bottom: 6vmin;
+		&:before, &:after {
+			content: "";
+			width: 3vmin;
+			height: 3vmin;
+			position: absolute;
+			border-radius: 100%;
+			border: 0.5vmin solid #00000050;
+			filter:
+				drop-shadow(4vmin 0 0 black)
+				drop-shadow(2vmin 2vmin 0 black);
+			margin-left: -8vmin;
+			margin-top: 12vmin;
+		}
+		&:after {
+			filter: none;
+			margin-left: 8vmin;
+		}
+	}
+
+	input:checked + label, input + label:hover {
+		transform: translateX(calc(50vw - 10vmin)) translateY(1vmin);
+	}
+
+	label[for=gold] { margin-left: -25vmin; }
+	label[for=bronze] { margin-left: 25vmin; }
+
+}
+
   </div>
 
 
