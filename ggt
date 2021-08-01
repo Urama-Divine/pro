@@ -1,9 +1,9 @@
-input(type='radio' name='metal' id='gold' checked)
-label(for='gold') GOLD
-input(type='radio' name='metal' id='silver')
-label(for='silver') SILVER
-input(type='radio' name='metal' id='bronze')
-label(for='bronze') BRONZE
+<input>(type='radio' name='metal' id='gold' checked)</input>
+<label>(for='gold') GOLD</label>
+<input>(type='radio' name='metal' id='silver')</input>
+<label>(for='silver') SILVER</label>
+<input>(type='radio' name='metal' id='bronze')</input>
+<label>(for='bronze') BRONZE</label>
 div.container
 	div.rings
 		- for (var x = 1; x < 6; x++)

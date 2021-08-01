@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+ <head>
+  <meta charset="utf-8">
+  <title>Pricing</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="style4.css" rel="stylesheet"  />
+  <link rel="icon" href="gt.png" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Monsterrat|Sacramento" rel="stylesheet" />
+ </head>
+ <body>
+
+  <section id="title">
+  
+   <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="div-nav">
+    <img src="gt.png" alt="Pro Dreams Int's photo" width="5%"><h3>Pro Dreams Int</h3> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToogleDemo02" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarToogleDemo02">
+  
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Products.html">Products</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="Videos.html">Videos</a>
+	  </l>
+	 </u>
+      
+    </div>
+   </nav>
+  </section>
+  
+  <h1>Please select file type</h3>
+  
+  
+  
+  <div  class="dropdown">
+  <button  onclick="myFunction()" class="dropbtn btn">File Type</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="Website.html">Website</a>
+    <a href="Assignment.html">Assignment</a>
+    <a href="Device.html">Device</a>
+    <a href="App.html">App</a>
+    <a href="Game.html">Game</a>
+  </div>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+<script>function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+ </body>
+</html>
